@@ -28,6 +28,7 @@ public class MovieDownloader {
 			return null;
 		}
 
+		//makes a single request
 		HttpURLConnection urlConnection = null;
 		BufferedReader reader = null;
 
@@ -38,9 +39,13 @@ public class MovieDownloader {
 			URL url = new URL(urlString);
 
 			urlConnection = (HttpURLConnection) url.openConnection();
+			//set the method for URL Request
 			urlConnection.setRequestMethod("GET");
+			//opens a communications link to the resource referenced by this URL
 			urlConnection.connect();
 
+			//input stream of bytes
+			//returns an input stream that reads from this open connection
 			InputStream inputStream = urlConnection.getInputStream();
 			StringBuffer buffer = new StringBuffer();
 			if (inputStream == null) {
